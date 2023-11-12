@@ -1,0 +1,151 @@
+
+
+.product-infor {
+    position: absolute;
+    padding: 0 178px;
+    margin: 134px 0 0;
+    width: 100%;
+    letter-spacing: 3px;
+    color: white;
+    animation: showInfo 1.5s ease;
+}
+
+
+@keyframes showInfo {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.product-infor__mode {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+}
+
+.product-infor__desc {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 68px;
+    margin: 8px 0 12px;
+
+}
+
+.product-infor__btn {
+    border: 1px solid #fff;
+    border-radius: 100px;
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,8,0,0.46);
+    transition: 0.2s;
+    position: relative;
+
+}
+
+.product-infor__btn:hover {
+    padding: 11px 40px 11px 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.product-infor__btn:hover .btn-icon {
+    opacity: 1;
+    transform: translateX(12px);
+}
+
+.btn-icon {
+    right: 30px;
+    opacity: 0;
+    font-size: 20px;
+    color: white;
+    margin-left: 12px;
+    transition: 0.2s;
+    position: absolute;
+}
+
+.product-infor__btn-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+/* ---------------css slide------------------- */
+
+.owl-carousel .slide1 {
+    height: 571px;
+    margin: 0;
+    padding: 0;
+    margin-top: 80px;
+    background-image: url('./image/slider1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+}
+.owl-carousel .slide2 {
+    height: 571px;
+    margin: 0;
+    padding: 0;
+    margin-top: 80px;
+    background-image: url('./image/slider2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+}
+.owl-carousel .slide3 {
+    height: 571px;
+    margin: 0;
+    padding: 0;
+    margin-top: 80px;
+    background-image: url('./image/slider3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    position: relative;
+}
+
+.owl-prev {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 70px !important;
+    color: #fff !important;
+}
+
+.owl-next {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 70px !important;
+    color: #fff !important;
+}
+
+.owl-dot {
+    width: 7px;
+    height: 7px;
+    color: #e02b20;
+    background-color: hsla(0,0%,100%,.5) !important;
+    border-radius: 50%;
+    margin: 0 5px;
+    /* border: 1px solid #fff !important; */
+}
+
+.owl-dot.active {
+    background-color: #f1eeee !important;
+}
+
+.owl-dots {
+    position: absolute;
+    bottom: 26px;
+    right: 50%;
+    transform: translateX(50%);
+
+}
