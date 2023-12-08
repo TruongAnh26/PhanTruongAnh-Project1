@@ -2,14 +2,15 @@ const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
 
-console.log($('.owl-next'))
+// xử lý khi nhấn Enter sẽ tìm kiếm
+const searchBtn = $('.input-search')
+const searchForm = $('#search-form')
+searchBtn.keypress = (e) => {
+    if(e.keycode === 13) {
+        
 
-var nextBtn = $('.owl-next')
-var productInfo = $('.product-infor')
-nextBtn.onclick = () => {
-    productInfo.style.amination = 'showInfo 1.5s ease'
-    setTimeout(() => {
-        productInfo.style.amination='';
-    }, 100);
-    
+        searchForm.submit();
+    }
 }
+
+

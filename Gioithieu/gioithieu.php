@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giới Thiệu</title>
-    <link rel="stylesheet" href="./gioithieu.css">
-    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../asset/main.css">
 </head>
 <body>
     <div id="page-container">
@@ -15,18 +14,18 @@
                     <img src="../asset/image/logo.png" alt="logo" class="logo-img">
                 </a>
             </div>
-            <div class="menu-nav">
+            <div class="menu-nav" style="margin-right: 40px;">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="../index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a href="../index.php">Trang chủ</a></li>
                     <li class="nav-item"><a href="#">Giới thiệu</a></li>
-                    <li class="nav-item"><a href="../Sanpham/index.html">Sản phẩm</a></li>
-                    <li class="nav-item"><a href="../Lienhe/index.html">Liên hệ</a></li>
+                    <li class="nav-item"><a href="../Sanpham/sanpham.php">Sản phẩm</a></li>
+                    <li class="nav-item"><a href="../Lienhe/lienhe.php">Liên hệ</a></li>
                 </ul>
             </div>
-            <div class="header-option">
+            <!-- <div class="header-option">
                 <span class="btn-sign-in">Đăng nhập</span>
                 <span class="btn-sign-up">Đăng ký</span>
-            </div>
+            </div> -->
         </header>
         <div class="content-container">
             <div class="content">

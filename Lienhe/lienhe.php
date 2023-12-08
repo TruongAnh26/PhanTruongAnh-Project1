@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên hệ</title>
-    <link rel="stylesheet" href="../header.css">
-    <link rel="stylesheet" href="./lienhe.css">
+    <link rel="stylesheet" href="../asset/main.css">
     <script src="https://kit.fontawesome.com/502650a7cc.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,18 +15,18 @@
                     <img src="../asset/image/logo.png" alt="logo" class="logo-img">
                 </a>
             </div>
-            <div class="menu-nav">
+            <div class="menu-nav" style="margin-right:40px ;">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="../index.html">Trang chủ</a></li>
-                    <li class="nav-item"><a href="../Gioithieu/index.html">Giới thiệu</a></li>
-                    <li class="nav-item"><a href="../Sanpham/index.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a href="../index.php">Trang chủ</a></li>
+                    <li class="nav-item"><a href="../Gioithieu/gioithieu.php">Giới thiệu</a></li>
+                    <li class="nav-item"><a href="../Sanpham/sanpham.php">Sản phẩm</a></li>
                     <li class="nav-item"><a href="#">Liên hệ</a></li>
                 </ul>
             </div>
-            <div class="header-option">
+            <!-- <div class="header-option">
                 <span class="btn-sign-in">Đăng nhập</span>
                 <span class="btn-sign-up">Đăng ký</span>
-            </div>
+            </div> -->
         </header>
         <div class="form-contact__wrap">
             <div class="form-contact__content">
