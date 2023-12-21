@@ -829,7 +829,7 @@ html {
     top: 0;
     width: 100%;
     height: 50px;
-    background-color: rgb(0, 28, 64);
+    background-color: rgb(99 20 19);
     display: flex;
     flex-direction: row-reverse;
     padding-right: 15px;
@@ -858,7 +858,7 @@ html {
     padding-right: 10px;
     overflow: auto;
     z-index: 10;
-    background: rgb(0, 28, 64);
+    background: rgb(99 20 19);
     /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
     /* border-bottom-right-radius: 50px; */
 }
@@ -1099,11 +1099,9 @@ html {
     padding: 10px;
 }
 
-.extension-show-wrap {
-}
+.extension-show-wrap {}
 
-.extension-show-wrap.hide {
-}
+.extension-show-wrap.hide {}
 
 .extension-show label {
     font-size: 15px;
@@ -1231,7 +1229,7 @@ html {
     background: rgb(239, 202, 202) !important;
 }
 
-.trash {
+.delete {
     color: rgb(222, 4, 0);
     background: rgb(247, 195, 194);
     border-width: initial;
@@ -1243,6 +1241,13 @@ html {
 .edit {
     color: rgb(245, 157, 57);
     background-color: rgb(251, 226, 197);
+}
+
+.img-product {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
 }
 
 footer {
@@ -1259,10 +1264,200 @@ footer {
     text-decoration: none;
     color: #aaa9a9;
 }
+
 .table-page.active {
-    color: rgb(22 22 72) ;
+    color: rgb(22 22 72);
 }
+
 .table-page:hover {
     color: rgb(22 22 72);
 }
 
+
+
+/* css modal add product */
+
+.modal-add-product,
+.modal-edit-product {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 12;
+}
+
+.modal-add-product.open {
+    display: flex;
+}
+
+.modal-edit-product.open {
+    display: flex;
+}
+
+.modal-add-product-container-wrap,
+.modal-edit-product-container-wrap {
+    position: relative;
+    width: 60vw;
+    height: 80vh;
+    overflow: auto;
+    background-color: #fff;
+    background: #ffffff;
+    border-radius: 0.375rem;
+    padding: 20px;
+    animation: showcomein ease 0.7s;
+}
+
+.modal-add-product-container {}
+
+.modal-add-product-title,
+.modal-edit-product-title {
+    margin: 0 0 30px;
+    font-size: 20px;
+    padding-bottom: 10px;
+    color: #000;
+    border-bottom: 2px solid #FFD43B;
+}
+
+.form-group-add,
+.form-group-edit {
+
+    margin-bottom: 20px;
+}
+
+.form-group-add:nth-child(6) {}
+
+.control-label {
+    font-weight: bold;
+    color: black;
+}
+
+.control-label.file-upload {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: rgb(0, 28, 64);
+    color: white;
+    border: 1px solid rgb(0, 28, 64);
+    border-radius: 4px;
+}
+
+.control-label.file-upload:hover {
+    opacity: 0.9;
+}
+
+.control-input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 15px;
+    line-height: 1.5;
+    color: black;
+    height: 45px;
+    background-color: #f1f1f1;
+    background-clip: padding-box;
+    border: 1px solid #dadada;
+    outline: none;
+    border-radius: 0.357rem;
+}
+
+.control-option {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 15px;
+    line-height: 1.5;
+    color: black;
+    height: 30px;
+    background-color: #f1f1f1;
+    background-clip: padding-box;
+    border: 1px solid #dadada;
+    border-radius: 0.357rem;
+}
+
+textarea.control-input {
+    height: auto;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.product-add__identity {}
+
+.product-add__name {}
+
+.product-add__desc {}
+
+.product-add__price {}
+
+.product-add__category {}
+
+#product-add__image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    margin: 6px;
+    display: none;
+}
+
+.product-add__state {}
+
+.product-add-btn,
+.product-edit-btn {
+    display: inline-block;
+}
+
+#product-add,
+#product-edit {
+    background-color: rgb(166 236 171);
+    color: rgb(1 123 10);
+    /* width: 100px; */
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 2px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.357rem;
+    transition: 0.1s;
+}
+
+#product-add:hover,
+#product-edit:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.modal-add-product-container-wrap::-webkit-scrollbar {
+    width: 12px;
+    /* độ rộng của thanh cuộn */
+}
+
+.modal-add-product-cotainer-wrap::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
+.modal-add-product-cotainer-wrap::-webkit-scrollbar-track {
+    background-color: lightgray;
+    /* màu của track */
+}
+
+
+.modal-edit-product-container-wrap::-webkit-scrollbar {
+    width: 12px;
+}
+
+.modal-edit-product-cotainer-wrap::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
+.modal-edit-product-cotainer-wrap::-webkit-scrollbar-track {
+    background-color: lightgray;
+    /* màu của track */
+}

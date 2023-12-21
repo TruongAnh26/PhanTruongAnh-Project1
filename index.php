@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FantaFood</title>
-    <link rel="stylesheet" href="./asset/main.css">
+    <link rel="stylesheet" href="./asset/mai.css">
     <link rel="stylesheet" href="./asset/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="./asset/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.theme.default.min.css">
     <script src="https://kit.fontawesome.com/502650a7cc.js" crossorigin="anonymous"></script>

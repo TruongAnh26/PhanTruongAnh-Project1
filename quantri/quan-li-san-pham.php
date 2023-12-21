@@ -20,13 +20,14 @@
   $totalRow = $resultCheckRows->num_rows;
   $sql = "select * from sanpham LIMIT $offset, $rowsPerPage";
   $totalPage = ceil($totalRow / $rowsPerPage);
+  $sql_check_category = "select * from loai_san_pham where 1 = 1";
+  $result_check_category = $connect->query($sql_check_category);
   //search sản phẩm
 
   if (isset($_GET['keyword'])) {
     $keyword = $_GET['keyword'];
-    
+
     $sql = "SELECT * FROM sanpham WHERE TEN_SP LIKE '%$keyword%' LIMIT $offset, $rowsPerPage;";
-    
   }
 
 
@@ -53,8 +54,8 @@
     </div>
     <hr>
     <ul class="app-menu">
-      <li><a class="app-menu__item primary" href="phan-mem-ban-hang.html"><i class='app-menu__icon fa-solid fa-cart-shopping'></i>
-          <span class="app-menu__label">Bán Hàng</span></a></li>
+      <li><a class="app-menu__item primary" href="tongquan.php"><i class='app-menu__icon fa-solid fa-cart-shopping'></i>
+          <span class="app-menu__label">Cửa hàng</span></a></li>
       <li><a class="app-menu__item active" href="table-data-product.html">
           <i class="app-menu__icon fa-solid fa-tag"></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
       </li>
@@ -80,7 +81,7 @@
         <div class="element-button">
           <div class="button-action">
 
-            <a class="btn btn-add btn-sm" href="form-add-san-pham.html" title="Thêm"><i class="fas fa-plus"></i>
+            <a class="btn btn-add btn-sm" href="#" title="Thêm"><i class="fas fa-plus"></i>
               Tạo mới sản phẩm</a>
           </div>
           <div class="button-action">
@@ -158,14 +159,14 @@
                 <tr>
                   <td><?php echo $row['MASP']; ?></td>
                   <td><?php echo $row['TEN_SP']; ?></td>
-                  <td><img src="<?php echo $row['HINH_ANH'] ?>" alt="" width="100px;"></td>
+                  <td><img src="<?php echo $row['HINH_ANH'] ?>" alt="" class="img-product"></td>
                   <td><?php echo $row['MO_TA']; ?></td>
                   <td><span class="badge <?php echo $isMode; ?>"><?php echo $row['TRANGTHAI'] == 1 ? "Còn hàng" : "Hết hàng"; ?></span></td>
                   <td><?php echo $row['GIA']; ?></td>
                   <td><?php echo $row['MALSP']; ?></td>
-                  <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
+                  <td><button class="btn btn-primary btn-sm delete" type="submit" title="Xóa" data-id-delete="<?php echo $row['MASP']; ?>"><i class="fas fa-trash-alt"></i>
                     </button>
-                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-primary btn-sm edit" type="submit" title="Sửa" id="show-emp" data-id="<?php echo $row['MASP']; ?>"><i class="fas fa-edit"></i></button>
 
                   </td>
                 </tr>
@@ -200,6 +201,71 @@
 
 
   </main>
+  <!-- modal add product -->
+  <div class="modal-add-product">
+    <div class="modal-add-product-container-wrap">
+      <div class="modal-add-product-container">
+
+        <h3 class="modal-add-product-title">Tạo mới sản phẩm</h3>
+        <i class="fa-solid fa-xmark close-icon-add close-icon"></i>
+
+        <form action="./add-product.php" method="post" enctype="multipart/form-data">
+          <div class="form-group-add">
+            <label for="product-add__identity" class="control-label">Mã sản phẩm</label>
+            <input class="control-input" type="number" name="masp" id="masp">
+          </div>
+          <div class="form-group-add">
+            <label for="product-add__name" class="control-label">Tên sản phẩm</label>
+            <input class="control-input" type="text" name="p broduct-add__name" id="product-add__name">
+          </div>
+          <div class="form-group-add">
+            <label for="product-add__desc" class="control-label">Mô tả</label>
+            <textarea class="control-input" name="product-add__desc" id="product-add__desc" cols="20" rows="4"></textarea>
+          </div>
+          <div class="form-group-add">
+            <label for="product-add__price" class="control-label">Giá</label>
+            <input class="control-input" type="number" name="product-add__price" id="product-add__price">
+          </div>
+          <div class="form-group-add">
+            <label for="product-add__category" class="control-label">Loại sản phẩm</label>
+            <select class="control-input" name="product-add__category" id="product-add__category">
+              <option>Chọn loại sản phẩm</option>
+              <?php
+              while ($row_category = $result_check_category->fetch_array()) {
+              ?>
+                <option class="control-option" value="<?php echo $row_category['MALSP']; ?>"><?php echo $row_category['TEN_LOAI']; ?></option>
+              <?php
+              }
+              ?>
+            </select>
+          </div>
+          <div class="form-group-add">
+            <img src="" alt="" id="product-add__image">
+            <label class="control-label file-upload">
+              <input type="file" name="file-image" onchange="previewImage(event)" />
+              Hình ảnh <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </label>
+          </div>
+          <div class="form-group-add">
+            <label for="product-add__state" class="control-label">Trạng thái</label>
+            <select class="control-input" name="product-add__state" id="product-add__state">
+              <option>Chọn tình trạng</option>
+              <option value="1">Còn hàng</option>
+              <option value="0">Hết hàng</option>
+            </select>
+          </div>
+          <div class="product-add-btn">
+            <input type="submit" value="Thêm" name="product-add" id="product-add">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal product edit -->
+  <div class="modal-edit-product"></div>
+
+
   <!-- set thời gian -->
   <script>
     time()
@@ -245,7 +311,7 @@
     }
   </script>
   </script>
-  <script src="../asset/main.js"></script>
+  <script src="../asset/ma.js"></script>
 </body>
 
 </html>
