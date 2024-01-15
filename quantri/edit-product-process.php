@@ -10,6 +10,7 @@ if (isset($_POST['product-edit'])) {
     $sql_update = "UPDATE sanpham SET TEN_SP = '$productEditName',MO_TA = '$productEditDesc',GIA = '$productEditPrice',MALSP = '$productEditCategory' ,TRANGTHAI = '$productEditState' WHERE MASP = '$masp'";
     
     if($connect-> query($sql_update)) {
+      
       header('Location: quan-li-san-pham.php');
     }
   }

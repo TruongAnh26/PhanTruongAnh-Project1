@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+
+  header('Location: ../index.php');
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +46,7 @@
     <ul class="app-nav">
       <!-- User Menu-->
       <li>
-        <a class="app-nav__item" href="../index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+        <a class="app-nav__item" href="logout.php"><i class="fa-solid fa-right-from-bracket"></i></a>
 
       </li>
     </ul>
@@ -48,7 +56,7 @@
   <aside class="app-sidebar">
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../asset/image/anhcv1.jpg" width="50px" alt="User Image">
       <div>
-        <p class="app-sidebar__user-name"><b>Trường Anh</b></p>
+        <p class="app-sidebar__user-name"><b><?php echo $_SESSION['username'] ?></b></p>
         <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
       </div>
     </div>
@@ -56,11 +64,11 @@
     <ul class="app-menu">
       <li><a class="app-menu__item primary" href="tongquan.php"><i class='app-menu__icon fa-solid fa-cart-shopping'></i>
           <span class="app-menu__label">Cửa hàng</span></a></li>
-      <li><a class="app-menu__item active" href="table-data-product.html">
+      <li><a class="app-menu__item active" href="#">
           <i class="app-menu__icon fa-solid fa-tag"></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
       </li>
-      <li><a class="app-menu__item" href="#"><i class='app-menu__icon fa-solid fa-user-pen'></i><span class="app-menu__label">Quản lý khách hàng</span></a></li>
-      <li><a class="app-menu__item" href="#">
+      <li><a class="app-menu__item" href="quan-li-khach-hang.php"><i class='app-menu__icon fa-solid fa-user-pen'></i><span class="app-menu__label">Quản lý khách hàng</span></a></li>
+      <li><a class="app-menu__item" href="quan-li-danh-muc.php">
           <i class="app-menu__icon fa-solid fa-paperclip"></i><span class="app-menu__label">Quản lý danh mục</span></a>
       </li>
       <li><a class="app-menu__item" href="#">
@@ -110,7 +118,7 @@
             <div class="extension-show">
               <label>
                 Hiện
-                <select class="show-option" onchange="location.href = 'index.php?page=1&rowsPerPage=' + this.value;">
+                <select class="show-option" onchange="location.href = 'quan-li-san-pham.php?page=1&rowsPerPage=' + this.value;">
                   <?php
                   $options = [10, 25, 50, 100];
                   foreach ($options as $option) {
@@ -186,7 +194,7 @@
             <?php
             for ($i = 1; $i <= $totalPage; $i++) {
               $isCurrentPage = ($currentPage == $i) ? 'active' : '';
-              echo "<a class='table-page $isCurrentPage' href='./index.php?&page=$i'>$i</a>";
+              echo "<a class='table-page $isCurrentPage' href='./quan-li-san-pham.php?&page=$i'>$i</a>";
             }
             ?>
 
@@ -209,14 +217,14 @@
         <h3 class="modal-add-product-title">Tạo mới sản phẩm</h3>
         <i class="fa-solid fa-xmark close-icon-add close-icon"></i>
 
-        <form action="./add-product.php" method="post" enctype="multipart/form-data">
+        <form action="./add-process.php" method="post" enctype="multipart/form-data">
           <div class="form-group-add">
             <label for="product-add__identity" class="control-label">Mã sản phẩm</label>
             <input class="control-input" type="number" name="masp" id="masp">
           </div>
           <div class="form-group-add">
             <label for="product-add__name" class="control-label">Tên sản phẩm</label>
-            <input class="control-input" type="text" name="p broduct-add__name" id="product-add__name">
+            <input class="control-input" type="text" name="product-add__name" id="product-add__name">
           </div>
           <div class="form-group-add">
             <label for="product-add__desc" class="control-label">Mô tả</label>
@@ -310,8 +318,7 @@
       }
     }
   </script>
-  </script>
-  <script src="../asset/ma.js"></script>
+  <script src="../asset/main.js"></script>
 </body>
 
 </html>

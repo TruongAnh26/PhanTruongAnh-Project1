@@ -52,7 +52,7 @@ function validator(options) {
     if(formElement)
     {
         formElement.onsubmit = function(e) {
-            e.preventDefault()
+            
             var isFormValid = true;
             options.rules.forEach(function(rule) {
                 var inputElement = formElement.querySelector(rule.selector)

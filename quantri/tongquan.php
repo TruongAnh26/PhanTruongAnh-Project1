@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+
+    header('Location: ../index.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,16 +21,24 @@
 <body>
     <?php
     include('../ketnoi.php');
+    $sql_count_custom = "select count(*) from khach_hang where 1=1";
+    $result_count_custom = $connect->query($sql_count_custom);
+    $rowCountCustom = $result_count_custom->fetch_array();
 
+    $sql_count_product = "select count(*) from sanpham where TRANGTHAI = 1";
+    $result_count_product = $connect->query($sql_count_product);
+    $rowCountProduct = $result_count_product->fetch_array();
 
-
+    $sql_count_sold_out = "select count(*) from sanpham where TRANGTHAI = 0";
+    $result_count_sold_out = $connect->query($sql_count_sold_out);
+    $rowCountSoldOut = $result_count_sold_out->fetch_array();
     ?>
     <header class="app-header">
         <!-- Navbar Right Menu-->
         <ul class="app-nav">
             <!-- User Menu-->
             <li>
-                <a class="app-nav__item" href="../index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+                <a class="app-nav__item" href="logout.php"><i class="fa-solid fa-right-from-bracket sign-out"></i></a>
 
             </li>
         </ul>
@@ -31,7 +48,7 @@
     <aside class="app-sidebar">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../asset/image/anhcv1.jpg" width="50px" alt="User Image">
             <div>
-                <p class="app-sidebar__user-name"><b>Trường Anh</b></p>
+                <p class="app-sidebar__user-name"><b><?php echo $_SESSION['username'] ?></b></p>
                 <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
             </div>
         </div>
@@ -42,8 +59,8 @@
             <li><a class="app-menu__item" href="quan-li-san-pham.php">
                     <i class="app-menu__icon fa-solid fa-tag"></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
             </li>
-            <li><a class="app-menu__item" href="#"><i class='app-menu__icon fa-solid fa-user-pen'></i><span class="app-menu__label">Quản lý khách hàng</span></a></li>
-            <li><a class="app-menu__item" href="#">
+            <li><a class="app-menu__item" href="quan-li-khach-hang.php"><i class='app-menu__icon fa-solid fa-user-pen'></i><span class="app-menu__label">Quản lý khách hàng</span></a></li>
+            <li><a class="app-menu__item" href="quan-li-danh-muc.php">
                     <i class="app-menu__icon fa-solid fa-paperclip"></i><span class="app-menu__label">Quản lý danh mục</span></a>
             </li>
             <li><a class="app-menu__item" href="#">
@@ -59,12 +76,32 @@
             <div id="clock"></div>
         </div>
 
-        <div class="tile">
-            <div class="tile-body">
 
-
+        <div class="overview">
+            <div class="overview-child">
+                <i class="fa-solid fa-user"></i>
+                <div class="overview-child-info">
+                    <h3>TỔNG KHÁCH HÀNG</h3>
+                    <p><?php echo $rowCountCustom['count(*)']; ?> khách hàng</p>
+                </div>
+            </div>
+            <div class="overview-child">
+                <i class="fa-solid fa-tag"></i>
+                <div class="overview-child-info">
+                    <h3>TỔNG SẢN PHẨM</h3>
+                    <p><?php echo $rowCountProduct['count(*)']; ?> sản phẩm</p>
+                </div>
+            </div>
+            <div class="overview-child">
+                <i class="fa-solid fa-fire pdf-file"></i>
+                <div class="overview-child-info">
+                    <h3>HẾT HÀNG</h3>
+                    <p><?php echo $rowCountSoldOut['count(*)']; ?> sản phẩm</p>
+                </div>
             </div>
         </div>
+
+
 
 
 
@@ -118,7 +155,7 @@
         }
     </script>
     </script>
-    <script src="../asset/ma.js"></script>
+    <script src="../asset/main.js"></script>
 </body>
 
 </html>
